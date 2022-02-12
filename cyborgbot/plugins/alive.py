@@ -5,7 +5,7 @@ import time
 from telethon.errors import ChatSendInlineForbiddenError as noin
 from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
 
-from Cyborgbot.sql.gvar_sql import gvarstat
+from cyborgbot.sql.gvar_sql import gvarstat
 from . import *
 
 #-------------------------------------------------------------------------------
@@ -24,12 +24,12 @@ ALIVE_TEMP = """
 """
 #-------------------------------------------------------------------------------
 
-@Cyborg_cmd(pattern="alive$")
+@cyborg_cmd(pattern="alive$")
 async def up(event):
     cid = await client_id(event)
-    ForGo10God, CYBORG_USER, Cyborg_mention = cid[0], cid[1], cid[2]
+    ForGo10God, CYBORG_USER, cyborg_mention = cid[0], cid[1], cid[2]
     start = datetime.datetime.now()
-    Cyborg = await eor(event, "`Building Alive....`")
+    cyborg = await eor(event, "`Building Alive....`")
     uptime = await get_time((time.time() - StartTime))
     a = gvarstat("ALIVE_PIC")
     if a is not None:
@@ -41,12 +41,12 @@ async def up(event):
         PIC = random.choice(c)
     else:
         PIC = "https://telegra.ph/file/50cc2ee99fbb455fd074a.jpg"
-    Cyborg_pic = PIC
+    cyborg_pic = PIC
     end = datetime.datetime.now()
     ling = (end - start).microseconds / 1000
-    omk = ALIVE_TEMP.format(ForGo10God, CYBORG_USER, tel_ver, Cyborg_ver, is_sudo, uptime, ling)
-    await event.client.send_file(event.chat_id, file=Cyborg_pic, caption=omk, parse_mode="HTML")
-    await Cyborg.delete()
+    omk = ALIVE_TEMP.format(ForGo10God, CYBORG_USER, tel_ver, cyborg_ver, is_sudo, uptime, ling)
+    await event.client.send_file(event.chat_id, file=cyborg_pic, caption=omk, parse_mode="HTML")
+    await cyborg.delete()
 
 
 msg = """{}\n
@@ -59,19 +59,19 @@ msg = """{}\n
 """
 botname = Config.BOT_USERNAME
 
-@Cyborg_cmd(pattern="aliveu$")
-async def Cyborg_a(event):
+@cyborg_cmd(pattern="aliveu$")
+async def cyborg_a(event):
     cid = await client_id(event)
-    ForGo10God, CYBORG_USER, Cyborg_mention = cid[0], cid[1], cid[2]
+    ForGo10God, CYBORG_USER, cyborg_mention = cid[0], cid[1], cid[2]
     uptime = await get_time((time.time() - StartTime))
     am = gvarstat("ALIVE_MSG") or "<b>»» Cyborg Is Running!  ««</b>"
     try:
-        Cyborg = await event.client.inline_query(botname, "alive")
-        await Cyborg[0].click(event.chat_id)
+        cyborg = await event.client.inline_query(botname, "alive")
+        await cyborg[0].click(event.chat_id)
         if event.sender_id == ForGo10God:
             await event.delete()
     except (noin, dedbot):
-        await eor(event, msg.format(am, tel_ver, Cyborg_ver, uptime, abuse_m, is_sudo), parse_mode="HTML")
+        await eor(event, msg.format(am, tel_ver, cyborg_ver, uptime, abuse_m, is_sudo), parse_mode="HTML")
 
 
 CmdHelp("alive").add_command(
