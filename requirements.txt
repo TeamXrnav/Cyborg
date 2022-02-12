@@ -16,6 +16,7 @@ google-auth-oauthlib
 googletrans==4.0.0-rc1
 gsearch
 gtts
+git+https://github.com/Xrnav/yt-fork
 hachoir
 heroku3
 html-telegraph-poster
@@ -62,5 +63,4 @@ wheel
 wikipedia
 youtube-search
 youtube-search-python
-youtube_dl
 ryoishin
