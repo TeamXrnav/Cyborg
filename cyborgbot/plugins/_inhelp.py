@@ -112,7 +112,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             if a:
                 help_pic = a.split(" ")[0]
             else:
-                help_pic = "https://telegra.ph/file/3a48c5756d2a9763eafaf.jpg"
+                help_pic = "https://telegra.ph/file/d09cdb53e72cd7215892e.jpg"
             help_msg = f"🔰 **{cyborg_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}"
             if help_pic == "DISABLE":
                 result = builder.article(
@@ -154,7 +154,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                         c.append(d)
                 PIC = random.choice(c)
             else:
-                PIC = "https://telegra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
+                PIC = "https://telegra.ph/file/50cc2ee99fbb455fd074a.jpg"
             ALV_PIC = PIC
             if ALV_PIC and ALV_PIC.endswith((".jpg", ".png")):
                 result = builder.photo(
