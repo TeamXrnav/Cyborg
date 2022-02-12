@@ -48,7 +48,7 @@ CYBORG_FIRST = (
 )
 
 alive_txt = """{}\n
-<b><i>🏅 𝙱𝚘𝚝 𝚂𝚝𝚊𝚝𝚞𝚜 🏅</b></i>
+<b><i>✨ 𝙱𝚘𝚝 𝚂𝚝𝚊𝚝𝚞𝚜 ✨</b></i>
 <b>Telethon ≈</b>  <i>{}</i>
 <b>Version ≈</b>  <i>{}</i>
 <b>Uptime ≈</b>  <i>{}</i>
@@ -78,13 +78,13 @@ def button(page, modules):
     buttons.append(
         [
             custom.Button.inline(
-               f"◀️ Back {cyborg_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
+               f"🔙 Back {cyborg_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
             ),
             custom.Button.inline(
-               f"• ❌ •", data="close"
+               f"• 🔚 •", data="close"
             ),
             custom.Button.inline(
-               f"{cyborg_emoji} Next ▶️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
+               f"{cyborg_emoji} Next 🔜", data=f"page({0 if page == (max_pages - 1) else page + 1})"
             ),
         ]
     )
@@ -113,7 +113,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 help_pic = a.split(" ")[0]
             else:
                 help_pic = "https://telegra.ph/file/d09cdb53e72cd7215892e.jpg"
-            help_msg = f"🔰 **{cyborg_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}"
+            help_msg = f"🤖 **{cyborg_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}"
             if help_pic == "DISABLE":
                 result = builder.article(
                     f"Hey! Only use {hl}help please",
@@ -200,7 +200,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         elif event.query.user_id in auth and query == "repo":
             result = builder.article(
                 title="Repository",
-                text=f"**⚡ ʟɛɢɛռɖaʀʏ ᴀғ ɦɛʟʟɮօt ⚡**",
+                text=f"** Cyborg Userbot **",
                 buttons=[
                     [Button.url("📑 Repo 📑", "https://github.com/TeamXrnav/Cyborg")],
                     [Button.url("🚀 Deploy 🚀", "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FTeamXrnav%2FCyborg&template=https%3A%2F%2Fgithub.com%2FteamXrnav%2FCyborg")],
@@ -222,9 +222,9 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 text="""**Hey! This is [Updates](https://t.me/CyborgUpdates) \nYou can know more about me from the links given below 👇**""",
                 buttons=[
                     [
-                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/CyborgUpdates"),
+                        custom.Button.url("✨ CHANNEL ✨", "https://t.me/CyborgUpdates"),
                         custom.Button.url(
-                            "⚡ GROUP ⚡", "https://t.me/CyborgSupportchat"
+                            "✨ GROUP ✨", "https://t.me/CyborgSupportchat"
                         ),
                     ],
                     [
@@ -344,7 +344,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 for y in x:
                     apn.append(y)
             await event.edit(
-                f"🔰 **{cyborg_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
+                f"🤖 **{cyborg_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
                 buttons=simp[1],
                 link_preview=False,
             )
@@ -379,7 +379,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 apn.append(y)
         if event.query.user_id in auth:
             await event.edit(
-                f"🔰 **{cyborg_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}`\n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : {page + 1}/{veriler[0]}",
+                f"🤖 **{cyborg_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}`\n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : {page + 1}/{veriler[0]}",
                 buttons=veriler[1],
                 link_preview=False,
             )
@@ -403,7 +403,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         try:
             buttons = [
                 custom.Button.inline(
-                    "⚡ " + cmd[0] + " ⚡", data=f"commands[{commands}[{page}]]({cmd[0]})"
+                    "✘ " + cmd[0] + " ✘", data=f"commands[{commands}[{page}]]({cmd[0]})"
                 )
                 for cmd in CMD_HELP_BOT[commands]["commands"].items()
             ]
@@ -441,10 +441,10 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         result = f"**📗 File :**  `{cmd}`\n"
         if CMD_HELP_BOT[cmd]["info"]["info"] == "":
             if not CMD_HELP_BOT[cmd]["info"]["warning"] == "":
-                result += f"**⚠️ Warning :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n"
+                result += f"**☠️ Warning :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n"
         else:
             if not CMD_HELP_BOT[cmd]["info"]["warning"] == "":
-                result += f"**⚠️ Warning :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n"
+                result += f"**☠️ Warning :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n"
             result += f"**ℹ️ Info :**  {CMD_HELP_BOT[cmd]['info']['info']}\n"
         sextraa = CMD_HELP_BOT[cmd]["extra"]
         if sextraa:
