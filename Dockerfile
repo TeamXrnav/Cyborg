@@ -1,4 +1,4 @@
-FROM ryoishin/cyborg:debian
+FROM ryoishin/cyborg:latest
 
 RUN git clone https://github.com/TeamXrnav/Cyborg.git /root/cyborgbot
 
