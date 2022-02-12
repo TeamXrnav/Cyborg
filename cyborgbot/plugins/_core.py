@@ -11,15 +11,15 @@ from telethon.tl.types import InputMessagesFilterDocument
 from . import *
 
 
-@Cyborg_cmd(pattern="cmds$")
+@cyborg_cmd(pattern="cmds$")
 async def kk(event):
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     cids = await client_id(event)
-    ForGo10God, CYBORG_USER, Cyborg_mention = cids[0], cids[1], cids[2]
+    ForGo10God, CYBORG_USER, cyborg_mention = cids[0], cids[1], cids[2]
     cmd = "ls Cyborgbot/plugins"
-    thumb = Cyborg_logo
+    thumb = cyborg_logo
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
@@ -27,11 +27,11 @@ async def kk(event):
     o = stdout.decode()
     _o = o.split("\n")
     o = "\n".join(_o)
-    OUTPUT = f"List of Plugins in bot :- \n\n{o}\n\n<><><><><><><><><><><><><><><><><><><><><><><><>\nHELP:- If you want to know the commands for a plugin, do :- \n.plinfo <plugin name> without the < > brackets. \nJoin {Cyborg_grp} for help."
+    OUTPUT = f"List of Plugins in bot :- \n\n{o}\n\n<><><><><><><><><><><><><><><><><><><><><><><><>\nHELP:- If you want to know the commands for a plugin, do :- \n.plinfo <plugin name> without the < > brackets. \nJoin {cyborg_grp} for help."
     if len(OUTPUT) > 69:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "cmd_list.text"
-            Cyborg_file = await event.client.send_file(
+            cyborg_file = await event.client.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -39,19 +39,19 @@ async def kk(event):
                 thumb=thumb,
                 reply_to=reply_to_id,
             )
-            await edit_or_reply(Cyborg_file, f"Output Too Large. This is the file for the list of plugins in bot.\n\n**BY :-** {CYBORG_USER}")
+            await edit_or_reply(cyborg_file, f"Output Too Large. This is the file for the list of plugins in bot.\n\n**BY :-** {CYBORG_USER}")
             await event.delete()
 
 
-@Cyborg_cmd(pattern="send ([\s\S]*)")
+@cyborg_cmd(pattern="send ([\s\S]*)")
 async def send(event):
     cids = await client_id(event)
-    ForGo10God, CYBORG_USER, Cyborg_mention = cids[0], cids[1], cids[2]
+    ForGo10God, CYBORG_USER, cyborg_mention = cids[0], cids[1], cids[2]
     message_id = event.message.id
-    thumb = Cyborg_logo
+    thumb = cyborg_logo
     input_str = event.pattern_match.group(1)
-    omk = f"**• Plugin name ≈** `{input_str}`\n**• Uploaded by ≈** {Cyborg_mention}\n\n⚡ **[🤖 Cyborg 🤖]({chnl_link})** ⚡"
-    the_plugin_file = "./Cyborgbot/plugins/{}.py".format(input_str)
+    omk = f"**• Plugin name ≈** `{input_str}`\n**• Uploaded by ≈** {cyborg_mention}\n\n⚡ **[🤖 Cyborg 🤖]({chnl_link})** ⚡"
+    the_plugin_file = "./cyborgbot/plugins/{}.py".format(input_str)
     if os.path.exists(the_plugin_file):
         lauda = await event.client.send_file(
             event.chat_id,
@@ -67,18 +67,18 @@ async def send(event):
         await eod(event, "File not found..... Kek")
 
 
-@Cyborg_cmd(pattern="install(?:\s|$)([\s\S]*)")
+@cyborg_cmd(pattern="install(?:\s|$)([\s\S]*)")
 async def install(event):
     cids = await client_id(event)
-    ForGo10God, CYBORG_USER, Cyborg_mention = cids[0], cids[1], cids[2]
+    ForGo10God, CYBORG_USER, cyborg_mention = cids[0], cids[1], cids[2]
     b = 1
     owo = event.text[9:]
-    Cyborg = await eor(event, "__Installing.__")
+    cyborg = await eor(event, "__Installing.__")
     if event.reply_to_msg_id:
         try:
             downloaded_file_name = await event.client.download_media(  # pylint:disable=E0602
                 await event.get_reply_message(),
-                "./Cyborgbot/plugins/"  # pylint:disable=E0602
+                "./cyborgbot/plugins/"  # pylint:disable=E0602
             )
             if owo != "-f":
                 op = open(downloaded_file_name, "r")
@@ -88,7 +88,7 @@ async def install(event):
                     for harm in HARMFUL:
                         if harm in rd:
                             os.remove(downloaded_file_name)
-                            return await Cyborg.edit(f"**⚠️ WARNING !!** \n\n__Replied plugin file contains some harmful codes. Please consider checking the file. If you still want to install then use__ `{hl}install -f`. \n\n**Codes Detected :** \n• {harm}")
+                            return await cyborg.edit(f"**⚠️ WARNING !!** \n\n__Replied plugin file contains some harmful codes. Please consider checking the file. If you still want to install then use__ `{hl}install -f`. \n\n**Codes Detected :** \n• {harm}")
                 except BaseException:
                     pass
             if "(" not in downloaded_file_name:
@@ -106,24 +106,24 @@ async def install(event):
                         else:
                             a = "__Installing...__"
                             b = 1
-                        await Cyborg.edit(a)
-                    return await Cyborg.edit(f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {Cyborg_mention}\n\n{string}\n\n        ⚡ **[🤖 Cyborg 🤖]({chnl_link})** ⚡", link_preview=False)
-                return await Cyborg.edit(f"Installed module `{os.path.basename(downloaded_file_name)}`")
+                        await cyborg.edit(a)
+                    return await cyborg.edit(f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {cyborg_mention}\n\n{string}\n\n        ⚡ **[🤖 Cyborg 🤖]({chnl_link})** ⚡", link_preview=False)
+                return await cyborg.edit(f"Installed module `{os.path.basename(downloaded_file_name)}`")
             else:
                 os.remove(downloaded_file_name)
-                return await eod(Cyborg, f"**Failed to Install** \n`Error`\nModule already installed or unknown format")
+                return await eod(cyborg, f"**Failed to Install** \n`Error`\nModule already installed or unknown format")
         except Exception as e: 
-            await eod(Cyborg, f"**Failed to Install** \n`Error`\n{str(e)}")
+            await eod(cyborg, f"**Failed to Install** \n`Error`\n{str(e)}")
             return os.remove(downloaded_file_name)
 
 
-@Cyborg_cmd(pattern="uninstall ([\s\S]*)")
+@cyborg_cmd(pattern="uninstall ([\s\S]*)")
 async def uninstall(event):
     shortname = event.text[11:]
     if ".py" in shortname:
         shortname = shortname.replace(".py", "")
     Cyborg = await eor(event, f"__Trying to uninstall plugin__ `{shortname}` ...")
-    dir_path =f"./Cyborgbot/plugins/{shortname}.py"
+    dir_path =f"./cyborgbot/plugins/{shortname}.py"
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
@@ -132,7 +132,7 @@ async def uninstall(event):
         await eod(Cyborg, f"**Error !!** \n\n`{dir_path}` : __{e.strerror}__")
 
 
-@Cyborg_cmd(pattern="unload ([\s\S]*)")
+@cyborg_cmd(pattern="unload ([\s\S]*)")
 async def unload(event):
     shortname = event.pattern_match["shortname"]
     try:
@@ -146,7 +146,7 @@ async def unload(event):
         )
 
 
-@Cyborg_cmd(pattern="load ([\s\S]*)")
+@cyborg_cmd(pattern="load ([\s\S]*)")
 async def load(event):
     shortname = event.pattern_match["shortname"]
     try:
