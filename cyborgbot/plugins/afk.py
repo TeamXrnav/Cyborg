@@ -4,7 +4,7 @@ import datetime
 from telethon import events
 from telethon.tl import functions, types
 
-from Cyborgbot.sql.gvar_sql import addgvar, gvarstat, delgvar
+from cyborgbot.sql.gvar_sql import addgvar, gvarstat, delgvar
 from . import *
 
 
@@ -29,14 +29,14 @@ async def set_not_afk(event):
         total_afk_time = str((afk_end - afk_start))
     current_message = event.message.message
     if "#" not in current_message and gvarstat("AFK") == "YES":
-        Cyborgbot = await event.client.send_message(
+        cyborgbot = await event.client.send_message(
             event.chat_id,
             "__**Back to Virtual World!**__\nNo Longer AFK.\n⏱️ Was afk for: `"
             + total_afk_time
-            + "`", file=Cyborgpic
+            + "`", file=cyborgpic
         )
         try:
-            await unsave_gif(event, Cyborgbot)
+            await unsave_gif(event, cyborgbot)
         except:
             pass
         try:
@@ -53,13 +53,13 @@ async def set_not_afk(event):
                 event.chat_id,
                 "Please set `LOGGER_ID` "
                 + "for the proper functioning of afk."
-                + f" Ask in {Cyborg_grp} to get help!",
+                + f" Ask in {cyborg_grp} to get help!",
                 reply_to=event.message.id,
                 link_preview=False,
                 silent=True,
             )
         await asyncio.sleep(5)
-        await Cyborgbot.delete()
+        await cyborgbot.delete()
         afk_time = None
 
 
@@ -85,7 +85,7 @@ async def on_afk(event):
                 f"**I'm currently AFK!** \n\n**⏰ AFK Since :**  `{total_afk_time}`\n"
                 + f"\n**💬 Reason :** {reason}"
                 )
-        msg = await event.reply(message_to_reply, file=Cyborgpic)
+        msg = await event.reply(message_to_reply, file=cyborgpic)
         try:
             await unsave_gif(event, msg)
         except:
@@ -106,7 +106,7 @@ async def _(event):
     global afk_start
     global afk_end
     global reason
-    global Cyborgpic
+    global cyborgpic
     afk_time = None
     last_afk_message = {}
     afk_end = {}
@@ -114,7 +114,7 @@ async def _(event):
     afk_start = start_1.replace(microsecond=0)
     owo = event.text[5:]
     reason = owo
-    Cyborgpic = await event.client.download_media(krakenop)
+    cyborgpic = await event.client.download_media(krakenop)
     if gvarstat("AFK") != "YES":
         last_seen_status = await event.client(
             functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
@@ -124,7 +124,7 @@ async def _(event):
         if owo == "":
             addgvar("AFK", "YES")
             x = await event.client.send_message(
-                event.chat_id, f"**I'm going afk🚶**", file=Cyborgpic)
+                event.chat_id, f"**I'm going afk🚶**", file=cyborgpic)
             try:
                 await unsave_gif(event, x)
             except:
@@ -134,7 +134,7 @@ async def _(event):
             try:
                 xy = await event.client.send_message(
                     Config.LOGGER_ID,
-                    f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=Cyborgpic
+                    f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=cyborgpic
                     )
                 try:
                     await unsave_gif(event, xy)
@@ -145,7 +145,7 @@ async def _(event):
         else:
             addgvar("AFK", "YES")
             x = await event.client.send_message(
-                event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=Cyborgpic)
+                event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=cyborgpic)
             try:
                 await unsave_gif(event, x)
             except:
@@ -155,7 +155,7 @@ async def _(event):
             try:
                 xy = await event.client.send_message(
                     Config.LOGGER_ID,
-                    f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=Cyborgpic
+                    f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=cyborgpic
                     )
                 try:
                     await unsave_gif(event, xy)
@@ -178,14 +178,14 @@ if H2:
             total_afk_time = str((afk_end - afk_start))
         current_message = event.message.message
         if "#" not in current_message and gvarstat("AFK2") == "YES":
-            Cyborgbot = await event.client.send_message(
+            cyborgbot = await event.client.send_message(
                 event.chat_id,
                 "__**Back to Virtual World!**__\nNo Longer AFK.\n⏱️ Was afk for: `"
                 + total_afk_time
-                + "`", file=Cyborgpic
+                + "`", file=cyborgpic
             )
             try:
-                await unsave_gif(event, Cyborgbot)
+                await unsave_gif(event, cyborgbot)
             except:
                 pass
             try:
@@ -202,13 +202,13 @@ if H2:
                     event.chat_id,
                     "Please set `LOGGER_ID` "
                     + "for the proper functioning of afk."
-                    + f" Ask in {Cyborg_grp} to get help!",
+                    + f" Ask in {cyborg_grp} to get help!",
                     reply_to=event.message.id,
                     link_preview=False,
                     silent=True,
                 )
             await asyncio.sleep(5)
-            await Cyborgbot.delete()
+            await cyborgbot.delete()
             afk_time = None
 
 
@@ -234,7 +234,7 @@ if H2:
                     f"**I'm currently AFK!** \n\n**⏰ AFK Since :**  `{total_afk_time}`\n"
                     + f"\n**💬 Reason :** {reason}"
                     )
-            msg = await event.reply(message_to_reply, file=Cyborgpic)
+            msg = await event.reply(message_to_reply, file=cyborgpic)
             try:
                 await unsave_gif(event, msg)
             except:
@@ -255,7 +255,7 @@ if H2:
         global afk_start
         global afk_end
         global reason
-        global Cyborgpic
+        global cyborgpic
         afk_time = None
         last_afk_message = {}
         afk_end = {}
@@ -263,7 +263,7 @@ if H2:
         afk_start = start_1.replace(microsecond=0)
         owo = event.text[5:]
         reason = owo
-        Cyborgpic = await event.client.download_media(krakenop)
+        cyborgpic = await event.client.download_media(krakenop)
         if not gvarstat("AFK2"):
             last_seen_status = await event.client(
                 functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
@@ -273,7 +273,7 @@ if H2:
             if owo == "":
                 addgvar("AFK2", "YES")
                 x = await event.client.send_message(
-                    event.chat_id, f"**I'm going afk🚶**", file=Cyborgpic)
+                    event.chat_id, f"**I'm going afk🚶**", file=cyborgpic)
                 try:
                     await unsave_gif(event, x)
                 except:
@@ -283,7 +283,7 @@ if H2:
                 try:
                     xy = await event.client.send_message(
                         Config.LOGGER_ID,
-                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=Cyborgpic
+                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=cyborgpic
                         )
                     try:
                         await unsave_gif(event, xy)
@@ -294,7 +294,7 @@ if H2:
             else:
                 addgvar("AFK2", "YES")
                 x = await event.client.send_message(
-                    event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=Cyborgpic)
+                    event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=cyborgpic)
                 try:
                     await unsave_gif(event, x)
                 except:
@@ -304,7 +304,7 @@ if H2:
                 try:
                     xy = await event.client.send_message(
                         Config.LOGGER_ID,
-                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=Cyborgpic
+                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=cyborgpic
                         )
                     try:
                         await unsave_gif(event, xy)
@@ -327,14 +327,14 @@ if H3:
             total_afk_time = str((afk_end - afk_start))
         current_message = event.message.message
         if "#" not in current_message and gvarstat("AFK3") == "YES":
-            Cyborgbot = await event.client.send_message(
+            cyborgbot = await event.client.send_message(
                 event.chat_id,
                 "__**Back to Virtual World!**__\nNo Longer AFK.\n⏱️ Was afk for: `"
                 + total_afk_time
-                + "`", file=Cyborgpic
+                + "`", file=cyborgpic
             )
             try:
-                await unsave_gif(event, Cyborgbot)
+                await unsave_gif(event, cyborgbot)
             except:
                 pass
             try:
@@ -351,13 +351,13 @@ if H3:
                     event.chat_id,
                     "Please set `LOGGER_ID` "
                     + "for the proper functioning of afk."
-                    + f" Ask in {Cyborg_grp} to get help!",
+                    + f" Ask in {cyborg_grp} to get help!",
                     reply_to=event.message.id,
                     link_preview=False,
                     silent=True,
                 )
             await asyncio.sleep(5)
-            await Cyborgbot.delete()
+            await cyborgbot.delete()
             afk_time = None
 
 
@@ -383,7 +383,7 @@ if H3:
                     f"**I'm currently AFK!** \n\n**⏰ AFK Since :**  `{total_afk_time}`\n"
                     + f"\n**💬 Reason :** {reason}"
                     )
-            msg = await event.reply(message_to_reply, file=Cyborgpic)
+            msg = await event.reply(message_to_reply, file=cyborgpic)
             try:
                 await unsave_gif(event, msg)
             except:
@@ -404,7 +404,7 @@ if H3:
         global afk_start
         global afk_end
         global reason
-        global Cyborgpic
+        global cyborgpic
         afk_time = None
         last_afk_message = {}
         afk_end = {}
@@ -412,7 +412,7 @@ if H3:
         afk_start = start_1.replace(microsecond=0)
         owo = event.text[5:]
         reason = owo
-        Cyborgpic = await event.client.download_media(krakenop)
+        cyborgpic = await event.client.download_media(krakenop)
         if not gvarstat("AFK3"):
             last_seen_status = await event.client(
                 functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
@@ -422,7 +422,7 @@ if H3:
             if owo == "":
                 addgvar("AFK3", "YES")
                 x = await event.client.send_message(
-                    event.chat_id, f"**I'm going afk🚶**", file=Cyborgpic)
+                    event.chat_id, f"**I'm going afk🚶**", file=cyborgpic)
                 try:
                     await unsave_gif(event, x)
                 except:
@@ -432,7 +432,7 @@ if H3:
                 try:
                     xy = await event.client.send_message(
                         Config.LOGGER_ID,
-                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=Cyborgpic
+                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=cyborgpic
                         )
                     try:
                         await unsave_gif(event, xy)
@@ -443,7 +443,7 @@ if H3:
             else:
                 addgvar("AFK3", "YES")
                 x = await event.client.send_message(
-                    event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=Cyborgpic)
+                    event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=cyborgpic)
                 try:
                     await unsave_gif(event, x)
                 except:
@@ -453,7 +453,7 @@ if H3:
                 try:
                     xy = await event.client.send_message(
                         Config.LOGGER_ID,
-                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=Cyborgpic
+                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=cyborgpic
                         )
                     try:
                         await unsave_gif(event, xy)
@@ -476,14 +476,14 @@ if H4:
             total_afk_time = str((afk_end - afk_start))
         current_message = event.message.message
         if "#" not in current_message and gvarstat("AFK4") == "YES":
-            Cyborgbot = await event.client.send_message(
+            cyborgbot = await event.client.send_message(
                 event.chat_id,
                 "__**Back to Virtual World!**__\nNo Longer AFK.\n⏱️ Was afk for: `"
                 + total_afk_time
-                + "`", file=Cyborgpic
+                + "`", file=cyborgpic
             )
             try:
-                await unsave_gif(event, Cyborgbot)
+                await unsave_gif(event, cyborgbot)
             except:
                 pass
             try:
@@ -500,13 +500,13 @@ if H4:
                     event.chat_id,
                     "Please set `LOGGER_ID` "
                     + "for the proper functioning of afk."
-                    + f" Ask in {Cyborg_grp} to get help!",
+                    + f" Ask in {cyborg_grp} to get help!",
                     reply_to=event.message.id,
                     link_preview=False,
                     silent=True,
                 )
             await asyncio.sleep(5)
-            await Cyborgbot.delete()
+            await cyborgbot.delete()
             afk_time = None
 
 
@@ -532,7 +532,7 @@ if H4:
                     f"**I'm currently AFK!** \n\n**⏰ AFK Since :**  `{total_afk_time}`\n"
                     + f"\n**💬 Reason :** {reason}"
                     )
-            msg = await event.reply(message_to_reply, file=Cyborgpic)
+            msg = await event.reply(message_to_reply, file=cyborgpic)
             try:
                 await unsave_gif(event, msg)
             except:
@@ -553,7 +553,7 @@ if H4:
         global afk_start
         global afk_end
         global reason
-        global Cyborgpic
+        global cyborgpic
         afk_time = None
         last_afk_message = {}
         afk_end = {}
@@ -561,7 +561,7 @@ if H4:
         afk_start = start_1.replace(microsecond=0)
         owo = event.text[5:]
         reason = owo
-        Cyborgpic = await event.client.download_media(krakenop)
+        cyborgpic = await event.client.download_media(krakenop)
         if not gvarstat("AFK4"):
             last_seen_status = await event.client(
                 functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
@@ -571,7 +571,7 @@ if H4:
             if owo == "":
                 addgvar("AFK4", "YES")
                 x = await event.client.send_message(
-                    event.chat_id, f"**I'm going afk🚶**", file=Cyborgpic)
+                    event.chat_id, f"**I'm going afk🚶**", file=cyborgpic)
                 try:
                     await unsave_gif(event, x)
                 except:
@@ -581,7 +581,7 @@ if H4:
                 try:
                     xy = await event.client.send_message(
                         Config.LOGGER_ID,
-                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=Cyborgpic
+                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=cyborgpic
                         )
                     try:
                         await unsave_gif(event, xy)
@@ -592,7 +592,7 @@ if H4:
             else:
                 addgvar("AFK4", "YES")
                 x = await event.client.send_message(
-                    event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=Cyborgpic)
+                    event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=cyborgpic)
                 try:
                     await unsave_gif(event, x)
                 except:
@@ -602,7 +602,7 @@ if H4:
                 try:
                     xy = await event.client.send_message(
                         Config.LOGGER_ID,
-                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=Cyborgpic
+                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=cyborgpic
                         )
                     try:
                         await unsave_gif(event, xy)
@@ -625,14 +625,14 @@ if H5:
             total_afk_time = str((afk_end - afk_start))
         current_message = event.message.message
         if "#" not in current_message and gvarstat("AFK5") == "YES":
-            Cyborgbot = await event.client.send_message(
+            cyborgbot = await event.client.send_message(
                 event.chat_id,
                 "__**Back to Virtual World!**__\nNo Longer AFK.\n⏱️ Was afk for: `"
                 + total_afk_time
-                + "`", file=Cyborgpic
+                + "`", file=cyborgpic
             )
             try:
-                await unsave_gif(event, Cyborgbot)
+                await unsave_gif(event, cyborgbot)
             except:
                 pass
             try:
@@ -649,13 +649,13 @@ if H5:
                     event.chat_id,
                     "Please set `LOGGER_ID` "
                     + "for the proper functioning of afk."
-                    + f" Ask in {Cyborg_grp} to get help!",
+                    + f" Ask in {cyborg_grp} to get help!",
                     reply_to=event.message.id,
                     link_preview=False,
                     silent=True,
                 )
             await asyncio.sleep(5)
-            await Cyborgbot.delete()
+            await cyborgbot.delete()
             afk_time = None
 
 
@@ -681,7 +681,7 @@ if H5:
                     f"**I'm currently AFK!** \n\n**⏰ AFK Since :**  `{total_afk_time}`\n"
                     + f"\n**💬 Reason :** {reason}"
                     )
-            msg = await event.reply(message_to_reply, file=Cyborgpic)
+            msg = await event.reply(message_to_reply, file=cyborgpic)
             try:
                 await unsave_gif(event, msg)
             except:
@@ -702,7 +702,7 @@ if H5:
         global afk_start
         global afk_end
         global reason
-        global Cyborgpic
+        global cyborgpic
         afk_time = None
         last_afk_message = {}
         afk_end = {}
@@ -710,7 +710,7 @@ if H5:
         afk_start = start_1.replace(microsecond=0)
         owo = event.text[5:]
         reason = owo
-        Cyborgpic = await event.client.download_media(krakenop)
+        cyborgpic = await event.client.download_media(krakenop)
         if not gvarstat("AFK5"):
             last_seen_status = await event.client(
                 functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
@@ -720,7 +720,7 @@ if H5:
             if owo == "":
                 addgvar("AFK5", "YES")
                 x = await event.client.send_message(
-                    event.chat_id, f"**I'm going afk🚶**", file=Cyborgpic)
+                    event.chat_id, f"**I'm going afk🚶**", file=cyborgpic)
                 try:
                     await unsave_gif(event, x)
                 except:
@@ -730,7 +730,7 @@ if H5:
                 try:
                     xy = await event.client.send_message(
                         Config.LOGGER_ID,
-                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=Cyborgpic
+                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `Not Mentioned`",file=cyborgpic
                         )
                     try:
                         await unsave_gif(event, xy)
@@ -741,7 +741,7 @@ if H5:
             else:
                 addgvar("AFK5", "YES")
                 x = await event.client.send_message(
-                    event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=Cyborgpic)
+                    event.chat_id, f"**I'm going afk🚶**\n\n**Because :** `{reason}`", file=cyborgpic)
                 try:
                     await unsave_gif(event, x)
                 except:
@@ -751,7 +751,7 @@ if H5:
                 try:
                     xy = await event.client.send_message(
                         Config.LOGGER_ID,
-                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=Cyborgpic
+                        f"#AFKTRUE \n**AFK mode** = `True`\n**Reason:** `{reason}`",file=cyborgpic
                         )
                     try:
                         await unsave_gif(event, xy)
