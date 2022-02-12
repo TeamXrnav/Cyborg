@@ -11,30 +11,30 @@ msg = f"""
 ** Cyborg Is Best Userbot 🤖🤖🤖🤖**
   •        [📑 Repo 📑](https://github.com/TeamXrnav/Cyborg)
   •        [🚀 Deploy 🚀](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FTeamXrnav%2FCyborg&template=https%3A%2F%2Fgithub.com%2FTeamXrnav%2FCyborg)
-  •  ©️ {Cyborg_channel} ™
+  •  ©️ {cyborg_channel} ™
 """
 botname = Config.BOT_USERNAME
 
-@Cyborg_cmd(pattern="repo$")
+@cyborg_cmd(pattern="repo$")
 async def repo(event):
     cids = await client_id(event)
-    ForGo10God, CYBORG_USER, Cyborg_mention = cids[0], cids[1], cids[2]
+    ForGo10God, CYBORG_USER, cyborg_mention = cids[0], cids[1], cids[2]
     try:
-        Cyborg = await event.client.inline_query(botname, "repo")
-        await Cyborg[0].click(event.chat_id)
+        cyborg = await event.client.inline_query(botname, "repo")
+        await cyborg[0].click(event.chat_id)
         if event.sender_id == ForGo10God:
             await event.delete()
     except (noin, dedbot):
         await eor(event, msg)
 
 
-@Cyborg_cmd(pattern="help$")
+@cyborg_cmd(pattern="help$")
 async def _(event):
     tgbotusername = Config.BOT_USERNAME
     chat = "@Botfather"
     if tgbotusername is not None:
         try:
-            results = await event.client.inline_query(tgbotusername, "Cyborgbot_help")
+            results = await event.client.inline_query(tgbotusername, "cyborgbot_help")
             await results[0].click(
                 event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
             )
@@ -51,8 +51,8 @@ async def _(event):
                     sixth = await conv.get_response()
                     await bot.send_read_acknowledge(conv.chat_id)
                 except YouBlockedUserError:
-                    return await Cyborg.edit("Unblock @Botfather first.")
-                await Cyborg.edit(f"**Turned On Inline Mode Successfully.** \n\nDo `{hl}help` again to get the help menu.")
+                    return await cyborg.edit("Unblock @Botfather first.")
+                await cyborg.edit(f"**Turned On Inline Mode Successfully.** \n\nDo `{hl}help` again to get the help menu.")
             await bot.delete_messages(
                 conv.chat_id, [first.id, second.id, third.id, fourth.id, fifth.id, sixth.id]
             )
@@ -60,8 +60,8 @@ async def _(event):
         await eor(event, "**⚠️ ERROR !!** \nPlease Re-Check BOT_TOKEN & BOT_USERNAME on Heroku.")
 
 
-@Cyborg_cmd(pattern="plinfo(?:\s|$)([\s\S]*)")
-async def Cyborgbott(event):
+@cyborg_cmd(pattern="plinfo(?:\s|$)([\s\S]*)")
+async def cyborgbot(event):
     args = event.pattern_match.group(1).lower()
     if args:
         if args in CMD_HELP:
