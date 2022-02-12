@@ -122,14 +122,14 @@ async def uninstall(event):
     shortname = event.text[11:]
     if ".py" in shortname:
         shortname = shortname.replace(".py", "")
-    Cyborg = await eor(event, f"__Trying to uninstall plugin__ `{shortname}` ...")
+    cyborg = await eor(event, f"__Trying to uninstall plugin__ `{shortname}` ...")
     dir_path =f"./cyborgbot/plugins/{shortname}.py"
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
-        await eod(Cyborg, f"**Uninstalled plugin** `{shortname}` **successfully.**")
+        await eod(cyborg, f"**Uninstalled plugin** `{shortname}` **successfully.**")
     except OSError as e:
-        await eod(Cyborg, f"**Error !!** \n\n`{dir_path}` : __{e.strerror}__")
+        await eod(cyborg, f"**Error !!** \n\n`{dir_path}` : __{e.strerror}__")
 
 
 @cyborg_cmd(pattern="unload ([\s\S]*)")
