@@ -170,27 +170,27 @@ async def cyborg_is_on():
         pass
 # Why not come here and chat??
     try:
-        await bot(ImportChatInviteRequest('bZxlmdNFp1NjMDNh'))
+        await bot(ImportChatInviteRequest('@CyborgSupportChat'))
     except BaseException:
         pass
     try:
         if H2:
-            await H2(ImportChatInviteRequest('bZxlmdNFp1NjMDNh'))
+            await H2(ImportChatInviteRequest('@CyborgSupportChat'))
     except BaseException:
         pass
     try:
         if H3:
-            await H3(ImportChatInviteRequest('bZxlmdNFp1NjMDNh'))
+            await H3(ImportChatInviteRequest('@CyborgSupportChat'))
     except BaseException:
         pass
     try:
         if H4:
-            await H4(ImportChatInviteRequest('bZxlmdNFp1NjMDNh'))
+            await H4(ImportChatInviteRequest('@CyborgSupportChat'))
     except BaseException:
         pass
     try:
         if H5:
-            await H5(ImportChatInviteRequest('bZxlmdNFp1NjMDNh'))
+            await H5(ImportChatInviteRequest('@CyborgSupportChat'))
     except BaseException:
         pass
 
