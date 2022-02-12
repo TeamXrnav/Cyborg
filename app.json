@@ -75,11 +75,14 @@
     "BOT_USERNAME": {
       "description": "Make a bot from @BotFather and paste the username here.",
       "value": ""
-  },
-  "addons": [{
+      }
+    },
+  "addons": [
+   {
     "plan": "heroku-postgresql",
     "options": {
       "version": "12"
-    }
-  }],
-}
+       }
+     }
+   ],
+ }
