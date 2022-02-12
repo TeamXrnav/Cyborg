@@ -68,7 +68,7 @@ wikipedia
 youtube-search
 youtube-search-python
 ryoishin
-youtube_dl
+git+https://github.com/HellBoy-OP/yt-fork
 aria2p
 async_generator
 asyncurban
