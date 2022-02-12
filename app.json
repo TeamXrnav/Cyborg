@@ -23,12 +23,12 @@
       "required": false
     },
     "PROFANITY": {
-      "description": "Leave it blank if you dont want Profanity in HellBot. Else Fill ON.",
+      "description": "Leave it blank if you dont want Profanity in Usebot. Else Fill ON.",
       "value": "ON",
       "required": false
     },
     "PM_LOG_ID": {
-      "description": "Fill your private Channel ID if you want to Log PM messages. Get channel id from @HELL_ID_BOT",
+      "description": "Fill your private Channel ID if you want to Log PM messages. Get channel id from @missrose_bot",
       "value": "",
       "required": false
     },
@@ -53,7 +53,7 @@
       "value": ""
     },
     "LOGGER_ID": {
-      "description": "Create a private channel. And get it's id from @HELL_ID_BOT and paste here. Value should start with -100",
+      "description": "Create a private channel. And get it's id from @missrose_bot and paste here. Value should start with -100",
       "value": ""
     },
     "CYBORGBOT_SESSION": {
@@ -75,12 +75,6 @@
     "BOT_USERNAME": {
       "description": "Make a bot from @BotFather and paste the username here.",
       "value": ""
-    },
-    "SUDO_USERS": {
-      "description": "Userid of user to grant sudo access. Add multiple sudo users by giving a space between userids",
-      "value": "",
-      "required": false
-    }
   },
   "addons": [{
     "plan": "heroku-postgresql",
@@ -88,15 +82,4 @@
       "version": "12"
     }
   }],
-  "buildpacks": [{
-    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },{
-    "url":"https://github.com/heroku/heroku-buildpack-chromedriver"
-  },{
-    "url": "https://github.com/heroku/heroku-buildpack-apt.git"
-  },{
-    "url": "https://github.com/chrismytton/heroku-buildpack-jq"
-  },{
-    "url": "heroku/python"
-  }]
 }
