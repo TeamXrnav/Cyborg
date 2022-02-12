@@ -196,7 +196,7 @@ async def cyborg_is_on():
 
 
 
-bot.loop.create_task(_is_on())
+bot.loop.create_task(cyborg_is_on())
 
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
