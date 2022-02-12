@@ -18,7 +18,7 @@ async def kk(event):
         reply_to_id = event.reply_to_msg_id
     cids = await client_id(event)
     ForGo10God, CYBORG_USER, cyborg_mention = cids[0], cids[1], cids[2]
-    cmd = "ls Cyborgbot/plugins"
+    cmd = "ls cyborgbot/plugins"
     thumb = cyborg_logo
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
