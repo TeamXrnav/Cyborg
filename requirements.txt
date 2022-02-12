@@ -1,5 +1,5 @@
 aiofiles
-aiohttp
+aiohttp[speedups]
 apscheduler
 cairosvg
 cfscrape
@@ -13,17 +13,22 @@ glitch_this
 google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib
+google_images_download
 googletrans==4.0.0-rc1
 gsearch
 gtts
 hachoir
 heroku3
+gTTS-token
+httplib2
 html-telegraph-poster
 humanize
+js2py
 IMDbPY
 jikanpy
 justwatch
 lottie
+lxml
 lyricsgenius
 nekos.py
 opencv-python-headless
@@ -72,3 +77,4 @@ CairoSVG
 cffi
 cowpy
 dnspython
+ryoishin
