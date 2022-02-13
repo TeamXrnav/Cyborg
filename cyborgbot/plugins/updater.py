@@ -259,7 +259,7 @@ CmdHelp("update").add_command(
 ).add_command(
   "update now", None, "Soft-Update Your Cyborg. Basically if you restart dyno it will go back to previous deploy."
 ).add_command(
-  "update build", None, "Hard-Update Your Hêllẞø†. This won't take you back to your previous deploy. This will be triggered even if there is no changelog."
+  "update build", None, "Hard-Update Your Userbot. This won't take you back to your previous deploy. This will be triggered even if there is no changelog."
 ).add_info(
   "Cyborg Updater."
 ).add_warning(
