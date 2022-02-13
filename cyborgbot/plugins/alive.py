@@ -19,6 +19,7 @@ ALIVE_TEMP = """
 ┣─ <b>» Sudo ~</b> <i>{}</i>
 ┣─ <b>» Uptime ~</b> <i>{}</i>
 ┣─ <b>» Ping ~</b> <i>{}</i>
+┣─ <b>» Python Version ~</b> <i>{}</i>
 ╰──────────────
 <b><i>»»» <a href='https://t.me/CyborgUpdates'>[ Updates ]</a> «««</i></b>
 """
