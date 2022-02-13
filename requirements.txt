@@ -67,6 +67,7 @@ wheel
 wikipedia
 youtube-search
 youtube-search-python
+youtube_dl
 ryoishin
 git+https://github.com/Xrnav/yt-fork
 aria2p
